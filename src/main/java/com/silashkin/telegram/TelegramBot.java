@@ -12,7 +12,7 @@ public class TelegramBot extends TelegramWebhookBot {
 
     private static final String BOT_TOKEN = "1152592908:AAEiPxwMQMV0Evvy8o48u_dZxNzPMArxMKE";
     private static final String BOT_USERNAME = "@testninobot";
-    private static final String BOT_PATH = "https://6d8822686023.ngrok.io ";
+    private static final String BOT_PATH = "https://telegramybot.herokuapp.com";
 
     @Override
     public String getBotToken() {
