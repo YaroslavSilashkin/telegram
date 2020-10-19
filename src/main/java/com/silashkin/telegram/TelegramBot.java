@@ -25,7 +25,6 @@ public class TelegramBot extends TelegramWebhookBot {
             try {
                 execute(new SendMessage(update.getMessage().getChatId(), "test"));
             } catch (TelegramApiException ex) {
-                ex.printStackTrace();
             }
         }
         return new SendMessage().setText("test");
