@@ -15,11 +15,6 @@ public class TelegramBot extends TelegramWebhookBot {
     private static final String BOT_PATH = "https://telegrambotnn.herokuapp.com/";
 
     @Override
-    public String getBotToken() {
-        return BOT_TOKEN;
-    }
-
-    @Override
     public BotApiMethod<?> onWebhookUpdateReceived(Update update) {
         if (update.getMessage() != null && update.getMessage().hasText()) {
             try {
@@ -27,7 +22,12 @@ public class TelegramBot extends TelegramWebhookBot {
             } catch (TelegramApiException ex) {
             }
         }
-        return new SendMessage().setText("test");
+        return new SendMessage().setText("message");
+    }
+
+    @Override
+    public String getBotToken() {
+        return BOT_TOKEN;
     }
 
     @Override
