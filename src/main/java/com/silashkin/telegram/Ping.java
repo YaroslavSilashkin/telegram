@@ -23,9 +23,9 @@ public class Ping {
             URL url = new URL(getUrl());
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.connect();
+            connection.getResponseCode();
             connection.disconnect();
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 }
