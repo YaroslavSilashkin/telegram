@@ -15,7 +15,7 @@ public class WController {
         this.telegramBot = telegramBot;
     }
 
-    @PostMapping(value = "/")
+    @PostMapping(path = "/")
     public BotApiMethod<?> onUpdateReceived(@RequestBody Update update) {
         return telegramBot.onWebhookUpdateReceived(update);
     }
