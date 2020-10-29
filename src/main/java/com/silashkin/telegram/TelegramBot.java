@@ -10,15 +10,15 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 @Component
 public class TelegramBot extends TelegramWebhookBot {
 
-    private static final String BOT_TOKEN = "1152592908:AAEiPxwMQMV0Evvy8o48u_dZxNzPMArxMKE";
-    private static final String BOT_USERNAME = "@testninobot";
+    private static final String BOT_TOKEN = "${bottoken}";
+    private static final String BOT_USERNAME = "${username}";
     private static final String BOT_PATH = "https://telegrambotnn.herokuapp.com/";
 
     @Override
     public BotApiMethod<?> onWebhookUpdateReceived(Update update) {
         if (update.getMessage() != null && update.getMessage().hasText()) {
             try {
-                execute(new SendMessage(update.getMessage().getChatId(), "test"));
+                execute(new SendMessage(update.getMessage().getChatId(), update.getMessage().getConnectedWebsite()));
             } catch (TelegramApiException ex) {
             }
         }

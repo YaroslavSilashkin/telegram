@@ -23,7 +23,7 @@ public class Ping {
             URL url = new URL(getUrl());
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.connect();
-            System.out.println(url.getHost() + connection.getResponseCode());
+            System.out.println(url.getHost() + " " + connection.getResponseCode());
             connection.disconnect();
         } catch (IOException e) {
         }
