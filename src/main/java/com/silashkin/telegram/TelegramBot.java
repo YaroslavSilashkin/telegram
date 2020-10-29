@@ -18,7 +18,7 @@ public class TelegramBot extends TelegramWebhookBot {
     public BotApiMethod<?> onWebhookUpdateReceived(Update update) {
         if (update.getMessage() != null && update.getMessage().hasText()) {
             try {
-                execute(new SendMessage(update.getMessage().getChatId(), update.getMessage().getConnectedWebsite()));
+                execute(new SendMessage(update.getMessage().getChatId(), "test"));
             } catch (TelegramApiException ex) {
             }
         }
