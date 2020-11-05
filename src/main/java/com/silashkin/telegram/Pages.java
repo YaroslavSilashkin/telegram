@@ -1,4 +1,4 @@
 package com.silashkin.telegram;
 
-public class Task {
+public class Pages {
 }
