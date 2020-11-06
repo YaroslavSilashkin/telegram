@@ -14,18 +14,18 @@ import org.springframework.beans.factory.annotation.Value;
 @Setter
 public class Ping {
 
-//    @Value("${ping.url}")
-//    private String url;
-//
-//    @Scheduled(fixedRateString = "${ping.period}")
-//    public void pingMe() {
-//        try {
-//            URL url = new URL(getUrl());
-//            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-//            connection.connect();
-//            System.out.println(url.getHost() + " " + connection.getResponseCode());
-//            connection.disconnect();
-//        } catch (IOException e) {
-//        }
-//    }
+    @Value("${ping.url}")
+    private String url;
+
+    @Scheduled(fixedRateString = "${ping.period}")
+    public void pingMe() {
+        try {
+            URL url = new URL(getUrl());
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.connect();
+            System.out.println(url.getHost() + " " + connection.getResponseCode());
+            connection.disconnect();
+        } catch (IOException e) {
+        }
+    }
 }
