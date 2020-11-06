@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 @Setter
 public class Ping {
 
-    @Value("${ping.url}")
+    @Value("${path}")
     private String url;
 
     @Scheduled(fixedRateString = "${ping.period}")
