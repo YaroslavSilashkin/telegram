@@ -7,11 +7,11 @@ import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 @RestController
-public class WController {
+public class BotController {
 
     private final TelegramBot telegramBot;
 
-    public WController(TelegramBot telegramBot) {
+    public BotController(TelegramBot telegramBot) {
         this.telegramBot = telegramBot;
     }
 
