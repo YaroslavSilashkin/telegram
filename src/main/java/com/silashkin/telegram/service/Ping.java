@@ -1,4 +1,4 @@
-package com.silashkin.telegram;
+package com.silashkin.telegram.service;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;

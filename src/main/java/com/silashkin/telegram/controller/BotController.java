@@ -1,4 +1,4 @@
-package com.silashkin.telegram.Controller;
+package com.silashkin.telegram.controller;
 
 import com.silashkin.telegram.TelegramBot;
 import org.springframework.web.bind.annotation.PostMapping;

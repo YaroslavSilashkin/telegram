@@ -1,4 +1,4 @@
-package com.silashkin.telegram;
+package com.silashkin.telegram.botconfig;
 
 import lombok.Getter;
 import lombok.Setter;
