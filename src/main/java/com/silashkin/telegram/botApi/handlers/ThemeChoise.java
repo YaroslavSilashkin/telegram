@@ -9,7 +9,7 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 public class ThemeChoise implements HandlerInterface {
 
     private String botState = "/";
-    private String nextState;
+    private String nextState = "";
 
     @Override
     public SendMessage handle(Message message) {

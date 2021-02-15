@@ -10,7 +10,6 @@ import com.silashkin.telegram.cache.UserCache;
 @Component
 public class Facade {
 
-    private UserCache userDataCache;
     private BotStateContext botStateContext;
 
     @Autowired
