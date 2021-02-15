@@ -1,23 +1,21 @@
 package com.silashkin.telegram.botApi;
 
-import com.silashkin.telegram.botApi.states.StartState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
+import com.silashkin.telegram.cache.UserCache;
 
 @Component
 public class Facade {
 
-    BotStateContext botStateContext;
-    BotState botState = new StartState();
+    private UserCache userDataCache;
+    private BotStateContext botStateContext;
 
     @Autowired
-    public Facade(BotStateContext botStateContext) {
+    public Facade(UserCache userDataCache, BotStateContext botStateContext) {
         this.botStateContext = botStateContext;
-//        
-
     }
 
     public SendMessage handlerUpdate(Update update) {
@@ -31,10 +29,10 @@ public class Facade {
 
     private SendMessage handleInputMessage(Message message) {
         SendMessage replyMessage;
-        String inputMsg = message.getText();
+        String botState;
+        botState = botStateContext.handlers.get(message.getText()).getName();
         long chatId = message.getChatId();
         replyMessage = botStateContext.processInputMessage(message, botState);
-
-        return replyMessage;
+        return replyMessage.setChatId(chatId);
     }
 }

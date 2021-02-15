@@ -8,17 +8,21 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 @Component
 public class ThemeChoise implements HandlerInterface {
 
-    private String state = "/";
-    HandlerInterface nextState;
-    HandlerInterface handler;
-
-    @Override
-    public String getState() {
-        return state;
-    }
+    private String botState = "/";
+    private String nextState;
 
     @Override
     public SendMessage handle(Message message) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new SendMessage().setText("ответ");
+    }
+
+    @Override
+    public String getName() {
+        return botState;
+    }
+
+    @Override
+    public String setNextState() {
+        return nextState;
     }
 }
