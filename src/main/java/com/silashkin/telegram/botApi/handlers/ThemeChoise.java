@@ -8,12 +8,12 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 @Component
 public class ThemeChoise implements HandlerInterface {
 
-    private String botState = "/";
+    private String botState = "/ThemeChoise";
     private String nextState = "";
 
     @Override
     public SendMessage handle(Message message) {
-        return new SendMessage().setText("ответ");
+        return new SendMessage().setText("Список тем");
     }
 
     @Override
