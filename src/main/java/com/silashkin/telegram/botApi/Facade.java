@@ -32,6 +32,7 @@ public class Facade {
         botState = botStateContext.handlers.get(message.getText()).getName();
         long chatId = message.getChatId();
         replyMessage = botStateContext.processInputMessage(message, botState);
+botState = ;
         return replyMessage.setChatId(chatId);
     }
 }

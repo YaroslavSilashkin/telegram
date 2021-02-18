@@ -11,5 +11,5 @@ public interface HandlerInterface {
 
     SendMessage handle(Message message);
 
-    String setNextState();
+    String getNextState();
 }

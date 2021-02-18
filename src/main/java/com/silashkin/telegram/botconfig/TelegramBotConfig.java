@@ -9,6 +9,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Setter
 public class TelegramBotConfig {
 
-    private String BotUsername;
-    private String BotPath;
+    private String botUsername;
+    private String botPath;
 }

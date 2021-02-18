@@ -17,7 +17,9 @@ public class BotStateContext {
     }
 
     public SendMessage processInputMessage(Message message, String botState) {
-        return findHandler(botState).handle(message);
+        HandlerInterface handler = findHandler(botState);
+        handler.getNextState();
+            return handler.handle(message);
     }
 
     private HandlerInterface findHandler(String botState) {
