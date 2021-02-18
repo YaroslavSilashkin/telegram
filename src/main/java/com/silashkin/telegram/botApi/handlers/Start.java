@@ -9,11 +9,12 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 public class Start implements HandlerInterface {
 
     private String botState = "/";
-    private String nextState = "";
+    private String nextState = "/ThemeChoiser";
 
     @Override
     public SendMessage handle(Message message) {
-        return new SendMessage().setText("Привет, это бот с вопросами интервью по java ");
+        return new SendMessage().setText("Привет, это бот с вопросами интервью по java");
+        
     }
 
     @Override

@@ -13,7 +13,7 @@ public class ThemeChoise implements HandlerInterface {
 
     @Override
     public SendMessage handle(Message message) {
-        return new SendMessage().setText("Список тем");
+        return new SendMessage().setText("Список тем: ");
     }
 
     @Override
