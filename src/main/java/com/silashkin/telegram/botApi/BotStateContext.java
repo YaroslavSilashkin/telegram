@@ -10,19 +10,19 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 @Component
 public class BotStateContext {
 
-    HashMap<String, HandlerInterface> handlers;
+    HashMap<BotState, HandlerInterface> states;
 
-    public BotStateContext(List<HandlerInterface> handlers) {
-        this.handlers = (HashMap<String, HandlerInterface>) handlers.stream().collect(Collectors.toMap(p -> p.getName(), t -> t));
+    public BotStateContext(List<BotState> botStates) {
+        this.states = (HashMap<BotState, HandlerInterface>) botStates.stream().collect(Collectors.toMap(p -> p, t -> t.getStateHandler()));
     }
 
-    public SendMessage processInputMessage(Message message, String botState) {
+    public SendMessage processInputMessage(Message message, BotState botState) {
         HandlerInterface handler = findHandler(botState);
         handler.getNextState();
             return handler.handle(message);
     }
 
-    private HandlerInterface findHandler(String botState) {
-        return handlers.get(botState);
+    private HandlerInterface findHandler(BotState botState) {
+        return states.get(botState);
     }
 }

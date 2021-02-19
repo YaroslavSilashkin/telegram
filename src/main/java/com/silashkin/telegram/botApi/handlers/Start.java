@@ -23,7 +23,7 @@ public class Start implements HandlerInterface {
     }
 
     @Override
-    public String setNextState() {
+    public String getNextState() {
         return nextState;
     }
 }

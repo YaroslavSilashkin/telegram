@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public interface Cache {
 
-    BotState getState(int i);
+    BotState getState(long i);
 
     Boolean setState(int i, BotState botState);
 }

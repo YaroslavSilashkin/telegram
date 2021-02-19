@@ -10,7 +10,7 @@ public class UserCache implements Cache {
     HashMap<Integer, BotState> userStates;
 
     @Override
-    public BotState getState(int i) {
+    public BotState getState(long i) {
         return userStates.get(i);
     }
 
