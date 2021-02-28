@@ -7,9 +7,9 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 @Component
 public interface HandlerInterface {
 
-    String getName();
+    BotState getState();
 
     SendMessage handle(Message message);
 
-    String getNextState();
+    BotState getNextState();
 }

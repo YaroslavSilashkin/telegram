@@ -1,6 +1,5 @@
 package com.silashkin.telegram.botApi;
 
-import com.silashkin.telegram.botApi.states.StartState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -34,8 +33,9 @@ public class Facade {
         BotState botState;
         long chatId = message.getChatId();
         if (message.getText() == "/") {
+            userCache.setState((int) chatId, BotState.STARTSTATE);
         }
-        botState = (BotState) botStateContext.states.get(userCache.getState(chatId));
+        botState = (BotState) botStateContext.states.get(userCache.getState((int)chatId));
         userCache.setState((int) chatId, botState);
         replyMessage = botStateContext.processInputMessage(message, botState);
         return replyMessage.setChatId(chatId);

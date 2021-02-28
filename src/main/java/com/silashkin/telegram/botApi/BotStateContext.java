@@ -12,14 +12,14 @@ public class BotStateContext {
 
     HashMap<BotState, HandlerInterface> states;
 
-    public BotStateContext(List<BotState> botStates) {
-        this.states = (HashMap<BotState, HandlerInterface>) botStates.stream().collect(Collectors.toMap(p -> p, t -> t.getStateHandler()));
+    public BotStateContext(List<HandlerInterface> handlers) {
+        this.states = (HashMap<BotState, HandlerInterface>) handlers.stream().collect(Collectors.toMap(p -> p.getState(), t -> t));
     }
 
     public SendMessage processInputMessage(Message message, BotState botState) {
         HandlerInterface handler = findHandler(botState);
         handler.getNextState();
-            return handler.handle(message);
+        return handler.handle(message);
     }
 
     private HandlerInterface findHandler(BotState botState) {
