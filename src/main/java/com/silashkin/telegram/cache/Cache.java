@@ -8,5 +8,5 @@ public interface Cache {
 
     BotState getState(int i);
 
-    Boolean setState(int i, BotState botState);
+    boolean setState(int i, BotState botState);
 }

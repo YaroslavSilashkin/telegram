@@ -7,16 +7,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserCache implements Cache {
 
-    HashMap<Integer, BotState> userStates;
+    private HashMap<Integer, BotState> userStates = new HashMap<>();
 
     @Override
     public BotState getState(int i) {
         return userStates.get(i);
-    }
 
+    }
+ 
     @Override
-    public Boolean setState(int i, BotState botState) {
+    public boolean setState(int i, BotState botState) {
         userStates.put(i, botState);
         return true;
+
     }
 }

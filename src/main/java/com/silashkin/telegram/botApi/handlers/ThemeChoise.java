@@ -2,6 +2,7 @@ package com.silashkin.telegram.botApi.handlers;
 
 import com.silashkin.telegram.botApi.BotState;
 import com.silashkin.telegram.botApi.HandlerInterface;
+import com.silashkin.telegram.cache.UserCache;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
@@ -9,18 +10,18 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 @Component
 public class ThemeChoise implements HandlerInterface {
 
-    private BotState botState = BotState.THEMECHOISER;
-    private BotState nextState = BotState.STARTSTATE;
+    private UserCache userCache;
+    private BotState nextState;
 
-    @Override
-    public SendMessage handle(Message message) {
-        return new SendMessage().setText("Список тем: ");
-
+    public ThemeChoise(UserCache userCache, BotState botState) {
+        this.userCache = userCache;
+        this.nextState = botState;
     }
 
     @Override
-    public BotState getState() {
-        return botState;
+    public SendMessage handle(Message message) {
+        userCache.setState((int) (long) message.getChatId(), nextState);
+        return new SendMessage().setText("Список тем:");
     }
 
     @Override

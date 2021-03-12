@@ -31,13 +31,14 @@ public class Facade {
     private SendMessage handleInputMessage(Message message) {
         SendMessage replyMessage;
         BotState botState;
-        long chatId = message.getChatId();
-        if (message.getText() == "/") {
-            userCache.setState((int) chatId, BotState.STARTSTATE);
+        long chat = message.getChatId();
+        botState = userCache.getState((int) chat);
+        if (message.getText().equals("/")) {
+            userCache.setState((int) chat, botStateContext.getStateByName("Start"));
         }
-        botState = (BotState) botStateContext.states.get(userCache.getState((int)chatId));
-        userCache.setState((int) chatId, botState);
+
         replyMessage = botStateContext.processInputMessage(message, botState);
-        return replyMessage.setChatId(chatId);
+        userCache.setState((int) chat, botState.getStateHandler().getNextState());
+        return replyMessage.setChatId(chat);
     }
 }
