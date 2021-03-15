@@ -32,13 +32,21 @@ public class Facade {
         SendMessage replyMessage;
         BotState botState;
         long chat = message.getChatId();
-        botState = userCache.getState((int) chat);
-        if (message.getText().equals("/")) {
-            userCache.setState((int) chat, botStateContext.getStateByName("Start"));
+        BotState stateByName = botStateContext.getStateByName(message.getText());
+        BotState cacheState = userCache.getState((int) chat);
+        botState = cacheState;
+        if (message.getText() == "/") {
+            botState = botStateContext.getStateByName("Start");
+        }
+        if (stateByName != null) {
+            botState = stateByName;
+        }
+        if (botState == null) {
+            return null;
         }
 
         replyMessage = botStateContext.processInputMessage(message, botState);
-        userCache.setState((int) chat, botState.getStateHandler().getNextState());
+        userCache.setState((int) chat, botStateContext.getStateByName(botState.getStateHandler().getNextStateName()));
         return replyMessage.setChatId(chat);
     }
 }
