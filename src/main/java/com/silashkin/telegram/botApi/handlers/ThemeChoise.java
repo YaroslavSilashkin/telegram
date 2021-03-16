@@ -1,6 +1,8 @@
 package com.silashkin.telegram.botApi.handlers;
 
 import com.silashkin.telegram.botApi.HandlerInterface;
+import com.silashkin.telegram.service.Content;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
@@ -9,14 +11,21 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 public class ThemeChoise implements HandlerInterface {
 
     private String nextState = "ThemeChoise";
+    Content botContent;
 
-    @Override
-    public SendMessage handle(Message message) {
-        return new SendMessage().setText("Список тем:");
+    @Autowired
+    public ThemeChoise(Content botContent) {
+        this.botContent = botContent;
     }
 
     @Override
     public String getNextStateName() {
         return nextState;
+    }
+
+    @Override
+    public SendMessage handle(Message message) {
+        return new SendMessage().setText("Список тем:" + "\n" + botContent.getContent());
+
     }
 }

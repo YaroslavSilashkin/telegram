@@ -35,7 +35,7 @@ public class Facade {
         BotState stateByName = botStateContext.getStateByName(message.getText());
         BotState cacheState = userCache.getState((int) chat);
         botState = cacheState;
-        if (message.getText() == "/") {
+        if (message.getText().equals("/")) {
             botState = botStateContext.getStateByName("Start");
         }
         if (stateByName != null) {
