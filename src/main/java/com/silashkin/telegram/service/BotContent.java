@@ -9,8 +9,7 @@ public class BotContent implements Content {
     private Set<String> themes = Set.of("ООП", "JVM", "Java Core", "Java Collection Framework");
 
     @Override
-    public Set<String> getContent() {
-        return themes;
+    public String getContent() {
+        return themes.toString();
     }
-
 }

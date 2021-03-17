@@ -11,7 +11,7 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 public class ThemeChoise implements HandlerInterface {
 
     private String nextState = "ThemeChoise";
-    Content botContent;
+    private Content botContent;
 
     @Autowired
     public ThemeChoise(Content botContent) {
