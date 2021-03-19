@@ -10,7 +10,7 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 @Component
 public class ThemeChoise implements HandlerInterface {
 
-    private String nextState = "ThemeChoise";
+    private final String nextState = "ThemeChoise";
     private Content botContent;
 
     @Autowired
