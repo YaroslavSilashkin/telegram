@@ -10,7 +10,7 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 @Component
 public class ThemeChoise implements HandlerInterface {
 
-    private final String nextState = "ThemeChoise";
+    private final String nextStateName = "ThemeChoise";
     private Content botContent;
 
     @Autowired
@@ -20,12 +20,11 @@ public class ThemeChoise implements HandlerInterface {
 
     @Override
     public String getNextStateName() {
-        return nextState;
+        return nextStateName;
     }
 
     @Override
     public SendMessage handle(Message message) {
         return new SendMessage().setText("Список тем:" + "\n" + botContent.getContent());
-
     }
 }
