@@ -25,7 +25,8 @@ public class BotStateContext {
     }
 
     public SendMessage processInputMessage(Message message, BotState botState) {
-        HandlerInterface handler = findHandler(botState);
+        HandlerInterface handler;
+        handler = findHandler(botState);
         return handler.handle(message);
     }
 
