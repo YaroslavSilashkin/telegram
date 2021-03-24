@@ -3,7 +3,7 @@ package com.silashkin.telegram.service;
 import org.springframework.stereotype.Component;
 
 @Component
-public interface Content {
+public interface ContentService {
 
     String getContent();
 }

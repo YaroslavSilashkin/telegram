@@ -28,25 +28,25 @@ public class Facade {
         return replyMessage;
     }
 
-    private SendMessage handleInputMessage(Message message) {
+    private SendMessage handleInputMessage(Message InputMessage) {
         SendMessage replyMessage;
-        BotState botState;
-        long chat = message.getChatId();
-        BotState stateByName = botStateContext.getStateByName(message.getText());
-        BotState cacheState = userCache.getState((int) chat);
-        botState = cacheState;
-        if (message.getText().equals("/")) {
-            botState = botStateContext.getStateByName("Start");
+        HandlerInterface handler;
+        long chat = InputMessage.getChatId();
+        HandlerInterface handlerByName = botStateContext.getByName(InputMessage.getText());
+        HandlerInterface cacheHandler = userCache.getCacheHandler((int) chat);
+        handler = cacheHandler;
+        if (InputMessage.getText().equals("/")) {
+            handler = botStateContext.getByName("Start");
         }
-        if (stateByName != null) {
-            botState = stateByName;
+        if (handlerByName != null) {
+            handler = handlerByName;
         }
-        if (botState == null) {
+        if (handler == null) {
             return null;
         }
 
-        replyMessage = botStateContext.processInputMessage(message, botState);
-        userCache.setState((int) chat, botStateContext.getStateByName(botState.getStateHandler().getNextStateName()));
+        replyMessage = botStateContext.processInputMessage(InputMessage, handler);
+        userCache.setCacheHandler((int) chat, botStateContext.getByName(handler.getNextHandlerName()));
         return replyMessage.setChatId(chat);
     }
 }

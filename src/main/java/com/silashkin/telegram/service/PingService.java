@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 @Service
 @Getter
 @Setter
-public class Ping {
+public class PingService {
 
     @Value("${path}")
     private String url;

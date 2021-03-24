@@ -1,24 +1,21 @@
 package com.silashkin.telegram.cache;
 
-import com.silashkin.telegram.botApi.BotState;
+import com.silashkin.telegram.botApi.HandlerInterface;
 import java.util.HashMap;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UserCache implements Cache {
 
-    private HashMap<Integer, BotState> userStates = new HashMap<>();
+    private HashMap<Integer, HandlerInterface> userHandlers = new HashMap<>();
 
     @Override
-    public BotState getState(int i) {
-        return userStates.get(i);
-
+    public HandlerInterface getCacheHandler(int i) {
+        return userHandlers.get(i);
     }
- 
-    @Override
-    public boolean setState(int i, BotState botState) {
-        userStates.put(i, botState);
-        return true;
 
+    @Override
+    public void setCacheHandler(int i, HandlerInterface handler) {
+        userHandlers.put(i, handler);
     }
 }

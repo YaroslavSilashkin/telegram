@@ -1,12 +1,12 @@
 package com.silashkin.telegram.cache;
 
-import com.silashkin.telegram.botApi.BotState;
+import com.silashkin.telegram.botApi.HandlerInterface;
 import org.springframework.stereotype.Component;
 
 @Component
 public interface Cache {
 
-    BotState getState(int i);
+    HandlerInterface getCacheHandler(int i);
 
-    boolean setState(int i, BotState botState);
+    void setCacheHandler(int i, HandlerInterface handler);
 }
