@@ -24,7 +24,7 @@ public class Start implements HandlerInterface {
     public SendMessage handle(Message inputMessage) {
         SendMessage message = new SendMessage();
         Long chat = inputMessage.getChatId();
-        String textMessage = "Привет, это бот с вопросами интервью по java.";
+        String textMessage = "Привет, это бот с вопросами интервью по java";
 
         final ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
         replyKeyboardMarkup.setSelective(true);
