@@ -15,7 +15,8 @@ public class BotStateContext {
 
     @Autowired
     public BotStateContext(List<HandlerInterface> handlers) {
-        this.handlers = (HashMap<String, HandlerInterface>) handlers.stream().collect(Collectors.toMap(p -> p.getName(), t -> t));
+        this.handlers = (HashMap<String, HandlerInterface>) handlers.stream().
+                collect(Collectors.toMap(p -> p.getName(), t -> t));
     }
 
     public HandlerInterface getByName(String handlerName) {
