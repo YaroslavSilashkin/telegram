@@ -32,14 +32,15 @@ public class Facade {
         SendMessage replyMessage;
         HandlerInterface handler;
         long chat = InputMessage.getChatId();
-        HandlerInterface handlerByName = botStateContext.getByName(InputMessage.getText());
+        HandlerInterface contextHandler = botStateContext.getByName(InputMessage.getText());
         HandlerInterface cacheHandler = userCache.getCacheHandler((int) chat);
         handler = cacheHandler;
+        //refactor передавать не хэндлер а имя
         if (InputMessage.getText().equals("/")) {
             handler = botStateContext.getByName("Start");
         }
-        if (handlerByName != null) {
-            handler = handlerByName;
+        if (contextHandler != null) {
+            handler = contextHandler;
         }
         if (handler == null) {
             return null;

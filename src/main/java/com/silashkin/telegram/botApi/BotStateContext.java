@@ -15,7 +15,8 @@ public class BotStateContext {
 
     @Autowired
     public BotStateContext(List<HandlerInterface> handlers) {
-        this.handlers = (HashMap<String, HandlerInterface>) handlers.stream().collect(Collectors.toMap(p -> p.getName(), t -> t));
+        this.handlers = (HashMap<String, HandlerInterface>) handlers.stream().
+                collect(Collectors.toMap(p -> p.getName(), t -> t));
     }
 
     public HandlerInterface getByName(String handlerName) {
@@ -24,6 +25,7 @@ public class BotStateContext {
         return handler;
     }
 
+    //refactor аргументы функции имя хэндлера
     public SendMessage processInputMessage(Message message, HandlerInterface handler) {
         return handler.handle(message);
     }
