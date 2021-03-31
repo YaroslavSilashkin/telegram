@@ -35,6 +35,7 @@ public class Facade {
         HandlerInterface contextHandler = botStateContext.getByName(InputMessage.getText());
         HandlerInterface cacheHandler = userCache.getCacheHandler((int) chat);
         handler = cacheHandler;
+        //refactor передавать не хэндлер а имя
         if (InputMessage.getText().equals("/")) {
             handler = botStateContext.getByName("Start");
         }

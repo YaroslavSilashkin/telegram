@@ -25,6 +25,7 @@ public class BotStateContext {
         return handler;
     }
 
+    //refactor аргументы функции имя хэндлера
     public SendMessage processInputMessage(Message message, HandlerInterface handler) {
         return handler.handle(message);
     }
