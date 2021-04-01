@@ -8,19 +8,24 @@ import org.telegram.telegrambots.bots.TelegramWebhookBot;
 import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
+/*
+ */
 @Component
-@Getter
 public class TelegramBot extends TelegramWebhookBot {
 
-    private Facade facade;
-
-    private String botUsername;
-    private String botPath;
-    private String botToken = System.getenv("BOT_TOKEN");
+    private final Facade facade;
+    @Getter
+    private final String botUsername;
+    @Getter
+    private final String botPath;
+    @Getter
+    private final String botToken = System.getenv("BOT_TOKEN");
 
     @Autowired
-    public TelegramBot(Facade facade) {
+    public TelegramBot(Facade facade, String botUserName, String botPath) {
         this.facade = facade;
+        this.botUsername = botUserName;
+        this.botPath = botPath;
     }
 
     @Override
