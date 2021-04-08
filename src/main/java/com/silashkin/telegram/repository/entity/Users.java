@@ -2,23 +2,19 @@ package com.silashkin.telegram.repository.entity;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Users implements Serializable {
 
-    @javax.persistence.Id
+    @Id
     private long chat;
-    private int qwe;
+    private int qwee;
     String handlerName;
-
-    public Users() {
-    }
-
-    public Users(long chat, int qwe, String handlerName) {
-        this.chat = chat;
-        this.qwe = qwe;
-        this.handlerName = handlerName;
-    }
 }
