@@ -13,7 +13,7 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.Keyboard
 @Component
 public class ThemeChoise implements HandlerInterface {
 
-    private final String nextStateName = "ThemeChoise";
+    private final String nextStateName = "Menu";
 
     @Override
     public String getNextHandlerName() {
