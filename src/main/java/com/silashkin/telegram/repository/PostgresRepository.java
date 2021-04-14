@@ -2,7 +2,8 @@ package com.silashkin.telegram.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface PostgresRepository<String, UserCache> extends JpaRepository<String, UserCache> {
+/**/
+public interface PostgresRepository<String, Users> extends JpaRepository<String, Users> {
 
-    String ByName();
+    Users ByName(String name);
 }

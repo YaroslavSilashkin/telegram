@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class BotContentService implements ContentService {
-//refactor разные источники
 
     private final Set<String> themes = Set.of();
 
