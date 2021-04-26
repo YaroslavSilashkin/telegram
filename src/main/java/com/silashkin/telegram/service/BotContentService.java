@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class BotContentService implements ContentService {
 
-    private Set<String> themes = Set.of("Themes");
+    private Set<String> themes = Set.of();
 
     @Override
     public Set<String> getContent() {

@@ -9,12 +9,12 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 
 @Component
-public class BotStateContext {
+public class BotContext {
 
     private HashMap<String, HandlerInterface> handlers;
 
     @Autowired
-    public BotStateContext(List<HandlerInterface> handlers) {
+    public BotContext(List<HandlerInterface> handlers) {
         this.handlers = (HashMap<String, HandlerInterface>) handlers.stream().
                 collect(Collectors.toMap(p -> p.getName(), t -> t));
     }
@@ -25,8 +25,7 @@ public class BotStateContext {
         return handler;
     }
 
-    //refactor аргументы функции имя хэндлера
-    public SendMessage processInputMessage(Message message, HandlerInterface handler) {
-        return handler.handle(message);
+    public SendMessage processInputMessage(Message message, String handlerName) {
+        return getByName(handlerName).handle(message);
     }
 }

@@ -11,10 +11,10 @@ import com.silashkin.telegram.cache.UserCache;
 public class Facade {
 
     private UserCache userCache;
-    private BotStateContext botStateContext;
+    private BotContext botStateContext;
 
     @Autowired
-    public Facade(UserCache userCache, BotStateContext botStateContext) {
+    public Facade(UserCache userCache, BotContext botStateContext) {
         this.userCache = userCache;
         this.botStateContext = botStateContext;
     }
@@ -32,21 +32,21 @@ public class Facade {
         SendMessage replyMessage;
         HandlerInterface handler;
         long chat = InputMessage.getChatId();
-        HandlerInterface contextHandler = botStateContext.getByName(InputMessage.getText());
-        HandlerInterface cacheHandler = userCache.getCacheHandler((int) chat);
-        handler = cacheHandler;
+        HandlerInterface fromContextHandler = botStateContext.getByName(InputMessage.getText());
+        HandlerInterface fromCacheHandler = userCache.getCacheHandler((int) chat);
+        handler = fromCacheHandler;
         //refactor передавать не хэндлер а имя
         if (InputMessage.getText().equals("/")) {
             handler = botStateContext.getByName("Start");
         }
-        if (contextHandler != null) {
-            handler = contextHandler;
+        if (fromContextHandler != null) {
+            handler = fromContextHandler;
         }
         if (handler == null) {
             return null;
         }
 
-        replyMessage = botStateContext.processInputMessage(InputMessage, handler);
+        replyMessage = handler.handle(InputMessage);
         userCache.setCacheHandler((int) chat, botStateContext.getByName(handler.getNextHandlerName()));
         return replyMessage.setChatId(chat);
     }
