@@ -26,6 +26,7 @@ public class PingService {
             System.out.println(connection.getResponseCode());
             connection.disconnect();
         } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
