@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserCache implements Cache {
 
-    private HashMap<Integer, HandlerInterface> userHandlers = new HashMap<>();
+    private final HashMap<Integer, HandlerInterface> userHandlers = new HashMap<>();
 
     @Override
     public HandlerInterface getCacheHandler(int i) {
