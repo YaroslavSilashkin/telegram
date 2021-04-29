@@ -10,6 +10,7 @@ import org.telegram.telegrambots.meta.api.objects.User;
 public class BotContentService implements ContentServiceInterface {
 
     private PostgresRepository<String, User> postgresRepository;
+    
     private Set<String> themes = Set.of();
 
     @Autowired
