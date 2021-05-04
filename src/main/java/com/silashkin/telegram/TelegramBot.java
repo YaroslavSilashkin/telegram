@@ -18,22 +18,20 @@ public class TelegramBot extends TelegramWebhookBot {
 
     private final Facade facade;
     @Getter
-    private final String botUsername;
+    private String botUsername;
     @Getter
-    private final String botPath;
+    private String botPath;
     @Getter
-    private final String botToken = System.getenv("BOT_TOKEN");
+    private String botToken = System.getenv("BOT_TOKEN");
 
     @Autowired
-    public TelegramBot(Facade facade, String botUserName, String botPath) {
+    public TelegramBot(Facade facade) {
         this.facade = facade;
-        this.botUsername = botUserName;
-        this.botPath = botPath;
+
     }
 
     @Override
     public BotApiMethod<?> onWebhookUpdateReceived(Update update) {
-        postgresRepository.ByName("");
         return facade.handlerUpdate(update);
     }
 }

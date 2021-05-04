@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.silashkin</groupId>
     <artifactId>telegram</artifactId>
-    <version>0.0.1-SNAPSHOT</version>s
+    <version>0.0.1-SNAPSHOT</version>
     <name>telegram</name>
     <properties>
         <java.version>1.8</java.version>

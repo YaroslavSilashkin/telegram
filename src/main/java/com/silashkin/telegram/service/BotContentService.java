@@ -13,10 +13,10 @@ public class BotContentService implements ContentServiceInterface {
     
     private Set<String> themes = Set.of();
 
-    @Autowired
-    public BotContentService(PostgresRepository<String, User> postgresRepository) {
-        this.postgresRepository = postgresRepository;
-    }
+//    @Autowired
+//    public BotContentService(PostgresRepository<String, User> postgresRepository) {
+//        this.postgresRepository = postgresRepository;
+//    }
 
     @Override
     public Set<String> getContent() {

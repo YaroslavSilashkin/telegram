@@ -11,5 +11,4 @@ public class TelegramBotConfig {
 
     private String botUsername;
     private String botPath;
-
 }
