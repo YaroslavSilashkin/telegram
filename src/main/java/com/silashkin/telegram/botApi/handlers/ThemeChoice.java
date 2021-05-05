@@ -11,9 +11,9 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.Keyboard
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 
 @Component
-public class ThemeChoise implements HandlerInterface {
+public class ThemeChoice implements HandlerInterface {
 
-    private final String nextStateName = "ThemeChoise";
+    private final String nextStateName = "ThemeChoice";
 
     @Override
     public String getNextHandlerName() {
@@ -59,6 +59,6 @@ public class ThemeChoise implements HandlerInterface {
 
     @Override
     public String getName() {
-        return "ThemeChoise";
+        return "ThemeChoice";
     }
 }

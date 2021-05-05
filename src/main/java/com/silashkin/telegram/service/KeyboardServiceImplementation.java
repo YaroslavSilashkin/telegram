@@ -9,7 +9,7 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.Keyboard
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 
 @Component
-public class KeyboardServiseImplementetion implements KeyboardService {
+public class KeyboardServiceImplementation implements KeyboardService {
 
     @Override
     public SendMessage createKeyboards(ArrayList<String> arrayList, SendMessage message) {

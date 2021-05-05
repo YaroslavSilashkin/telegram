@@ -15,7 +15,7 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.Keyboard
 @Component
 public class Start implements HandlerInterface {
 
-    private String nextState = "ThemeChoise";
+    private String nextState = "ThemeChoice";
 
     @Override
     public String getNextHandlerName() {

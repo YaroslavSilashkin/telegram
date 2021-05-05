@@ -30,13 +30,13 @@ public class Menu implements HandlerInterface {
         replyKeyboardMarkup.setSelective(true);
         replyKeyboardMarkup.setResizeKeyboard(true);
         replyKeyboardMarkup.setOneTimeKeyboard(false);
-
+        
         List<KeyboardRow> keyboard = new ArrayList<>();
 
         KeyboardRow row1 = new KeyboardRow();
         KeyboardRow row2 = new KeyboardRow();
         KeyboardRow row3 = new KeyboardRow();
-
+        
         row1.add(new KeyboardButton("Темы"));
         row2.add(new KeyboardButton("Нерешённые темы"));
         row3.add(new KeyboardButton("Помощь"));
