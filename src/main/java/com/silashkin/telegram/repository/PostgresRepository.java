@@ -1,8 +1,9 @@
 package com.silashkin.telegram.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface PostgresRepository<String, Users> extends JpaRepository<String, Users> {
-
-    //Users ByName(String name);
+@Repository
+public interface PostgresRepository<String, User> extends JpaRepository<String, User> {
+    //User ByName(String name);
 }

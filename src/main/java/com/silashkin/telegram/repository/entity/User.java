@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "users")
-public class Users implements Serializable {
+public class User implements Serializable {
 
     @Id
     private long chat;
