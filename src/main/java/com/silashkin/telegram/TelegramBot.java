@@ -9,12 +9,10 @@ import org.telegram.telegrambots.bots.TelegramWebhookBot;
 import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
-/*
- */
 @Component
 public class TelegramBot extends TelegramWebhookBot {
 
-    PostgresRepository<Object, Object> postgresRepository;
+    PostgresRepository postgresRepository;
 
     private final Facade facade;
     @Getter
@@ -27,11 +25,11 @@ public class TelegramBot extends TelegramWebhookBot {
     @Autowired
     public TelegramBot(Facade facade) {
         this.facade = facade;
-
     }
 
     @Override
     public BotApiMethod<?> onWebhookUpdateReceived(Update update) {
+        System.out.print(postgresRepository.count());
         return facade.handlerUpdate(update);
     }
 }
