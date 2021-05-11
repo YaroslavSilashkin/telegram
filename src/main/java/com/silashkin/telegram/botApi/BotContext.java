@@ -1,12 +1,11 @@
 package com.silashkin.telegram.botApi;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.objects.Message;
 
 @Component
 public class BotContext {
@@ -15,17 +14,11 @@ public class BotContext {
 
     @Autowired
     public BotContext(List<HandlerInterface> handlers) {
-        this.handlers = (HashMap<String, HandlerInterface>) handlers.stream().
-                collect(Collectors.toMap(HandlerInterface::getName, t -> t));
+        this.handlers = (HashMap<String, HandlerInterface>) handlers.stream().collect(Collectors.toMap(HandlerInterface::getName, t -> t));
     }
 
     public HandlerInterface getByName(String handlerName) {
-        HandlerInterface handler;
-        handler = handlers.get(handlerName);
+        HandlerInterface handler = handlers.get(handlerName);
         return handler;
-    }
-
-    public SendMessage processInputMessage(Message message, String handlerName) {
-        return getByName(handlerName).handle(message);
     }
 }
