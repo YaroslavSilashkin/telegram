@@ -37,7 +37,7 @@ public class Facade {
         handler = fromCacheHandler;
         //refactor передавать не хэндлер а имя
         if (InputMessage.getText().equals("/")) {
-            handler = botStateContext.getByName("Start");
+            handler = botStateContext.getByName("/Start");
         }
         if (fromContextHandler != null) {
             handler = fromContextHandler;

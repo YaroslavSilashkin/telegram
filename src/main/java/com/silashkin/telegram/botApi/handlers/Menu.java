@@ -13,7 +13,7 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.Keyboard
 @Component
 public class Menu implements HandlerInterface {
 
-    String nextHandlerName = "Start";
+    String nextHandlerName = "/Start";
 
     @Override
     public String getNextHandlerName() {
@@ -37,9 +37,9 @@ public class Menu implements HandlerInterface {
         KeyboardRow row2 = new KeyboardRow();
         KeyboardRow row3 = new KeyboardRow();
         
-        row1.add(new KeyboardButton("Темы"));
-        row2.add(new KeyboardButton("Нерешённые темы"));
-        row3.add(new KeyboardButton("Помощь"));
+        row1.add(new KeyboardButton("Режим работы"));
+        row2.add(new KeyboardButton("О курорте"));
+        row3.add(new KeyboardButton("Цены"));
 
         keyboard.add(row1);
         keyboard.add(row2);

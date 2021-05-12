@@ -5,6 +5,4 @@ import org.springframework.stereotype.Component;
 
 @Component
 public interface ContentServiceInterface {
-
-    Set<String> getContent();
 }
