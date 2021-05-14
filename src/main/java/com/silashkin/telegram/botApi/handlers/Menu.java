@@ -1,20 +1,23 @@
 package com.silashkin.telegram.botApi.handlers;
 
 import com.silashkin.telegram.botApi.HandlerInterface;
-import java.util.ArrayList;
-import java.util.List;
+import com.silashkin.telegram.service.KeyboardService;
+import com.silashkin.telegram.service.MenuKeyboardService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 
 @Component
 public class Menu implements HandlerInterface {
 
-    String nextHandlerName = "/Start";
+    private final String nextHandlerName = "/Start";
+    private final KeyboardService keyboardService;
 
+@Autowired
+public Menu (MenuKeyboardService keyboardService){
+    this.keyboardService = keyboardService;
+}
     @Override
     public String getNextHandlerName() {
         return nextHandlerName;
@@ -26,36 +29,14 @@ public class Menu implements HandlerInterface {
         Long chat = inputMessage.getChatId();
         String textMessage = "Основное меню";
 
-        final ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
-        replyKeyboardMarkup.setSelective(true);
-        replyKeyboardMarkup.setResizeKeyboard(true);
-        replyKeyboardMarkup.setOneTimeKeyboard(false);
-        
-        List<KeyboardRow> keyboard = new ArrayList<>();
-
-        KeyboardRow row1 = new KeyboardRow();
-        KeyboardRow row2 = new KeyboardRow();
-        KeyboardRow row3 = new KeyboardRow();
-        
-        row1.add(new KeyboardButton("Режим работы"));
-        row2.add(new KeyboardButton("О курорте"));
-        row3.add(new KeyboardButton("Цены"));
-
-        keyboard.add(row1);
-        keyboard.add(row2);
-        keyboard.add(row3);
-
-        replyKeyboardMarkup.setKeyboard(keyboard);
-
-        message.enableMarkdown(true);
+        message = keyboardService.create(message);
         message.setChatId(chat);
         message.setText(textMessage);
-        message.setReplyMarkup(replyKeyboardMarkup);
         return message;
     }
 
     @Override
     public String getName() {
-        return "Menu";
+        return "/Menu";
     }
 }
