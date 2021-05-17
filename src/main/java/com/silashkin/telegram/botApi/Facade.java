@@ -28,15 +28,17 @@ public class Facade {
         return replyMessage;
     }
 
-    private SendMessage handleInputMessage(Message InputMessage) {
+    private SendMessage handleInputMessage(Message inputMessage) {
         SendMessage replyMessage;
         HandlerInterface handler;
-        long chat = InputMessage.getChatId();
-        HandlerInterface fromContextHandler = botStateContext.getByName(InputMessage.getText());
+        final String inputMessageText = inputMessage.getText();
+        final long chat = inputMessage.getChatId();
+        //refactor this
+        HandlerInterface fromContextHandler = botStateContext.getByName(inputMessageText);
         HandlerInterface fromCacheHandler = userCache.getCacheHandler((int) chat);
         handler = fromCacheHandler;
-        //refactor передавать не хэндлер а имя
-        if (InputMessage.getText().equals("/")) {
+
+        if (inputMessage.getText().equals("/")) {
             handler = botStateContext.getByName("/Start");
         }
         if (fromContextHandler != null) {
@@ -46,7 +48,7 @@ public class Facade {
             return null;
         }
 
-        replyMessage = handler.handle(InputMessage);
+        replyMessage = handler.handle(inputMessage);
         userCache.setCacheHandler((int) chat, botStateContext.getByName(handler.getNextHandlerName()));
         return replyMessage.setChatId(chat);
     }
