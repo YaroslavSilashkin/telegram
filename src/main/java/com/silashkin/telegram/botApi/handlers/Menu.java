@@ -32,7 +32,7 @@ public Menu(SendMessageService messageService, MenuKeyboardService keyboardServi
 
         String textMessage = "Основное меню";
 
-        return sendMessageService.create(textMessage, inputMessage.getChatId(), keyboardService);
+        return sendMessageService.create(textMessage, inputMessage.getChatId());
     }
 
     @Override

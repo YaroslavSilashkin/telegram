@@ -29,7 +29,6 @@ public class TelegramBot extends TelegramWebhookBot {
 
     @Override
     public BotApiMethod<?> onWebhookUpdateReceived(Update update) {
-        System.out.print(postgresRepository.count());
         return facade.handlerUpdate(update);
     }
 }

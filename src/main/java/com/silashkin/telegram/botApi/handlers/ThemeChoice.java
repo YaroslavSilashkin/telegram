@@ -26,34 +26,10 @@ public class ThemeChoice implements HandlerInterface {
         Long chat = inputMessage.getChatId();
         String textMessage = "Список тем";
 
-        final ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
-        replyKeyboardMarkup.setSelective(true);
-        replyKeyboardMarkup.setResizeKeyboard(true);
-        replyKeyboardMarkup.setOneTimeKeyboard(false);
 
-        List<KeyboardRow> keyboard = new ArrayList<>();
-        KeyboardRow row1 = new KeyboardRow();
-        KeyboardRow row2 = new KeyboardRow();
-        KeyboardRow row3 = new KeyboardRow();
-        KeyboardRow row4 = new KeyboardRow();
-        KeyboardRow row5 = new KeyboardRow();
-
-        row1.add(new KeyboardButton("ООП"));
-        row2.add(new KeyboardButton("JVM"));
-        row3.add(new KeyboardButton("Java Core"));
-        row4.add(new KeyboardButton("Java Collection Framework"));
-        row5.add(new KeyboardButton("Menu"));
-
-        keyboard.add(row1);
-        keyboard.add(row2);
-        keyboard.add(row3);
-        keyboard.add(row4);
-        keyboard.add(row5);
-        replyKeyboardMarkup.setKeyboard(keyboard);
-        message.enableMarkdown(true);
         message.setChatId(chat);
         message.setText(textMessage);
-        message.setReplyMarkup(replyKeyboardMarkup);
+
         return message;
     }
 
