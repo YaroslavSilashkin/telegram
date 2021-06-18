@@ -38,6 +38,6 @@ public class Start implements HandlerInterface {
 
     @Override
     public String getName() {
-        return "/Start";
+        return this.getClass().getSimpleName();
     }
 }
