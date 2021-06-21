@@ -8,28 +8,26 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 
 @Component
-public class EquipmentRentalPrices implements HandlerInterface {
+public class Register implements HandlerInterface {
 
-    private final SendMessageService sendMessageService;
+    SendMessageService sendMessageService;
 
     @Autowired
-    public EquipmentRentalPrices (SendMessageService messageService){
-        this.sendMessageService = messageService;
+    public Register(SendMessageService sendMessageService){
+        this.sendMessageService=sendMessageService;
     }
-
     @Override
     public String getNextHandlerName() {
-        return "/EquipmentRentalPrices";
+        return "Регистрация";
     }
 
     @Override
-    public SendMessage handle(Message inputMessage) {
-
-        return sendMessageService.create("Цены на прокат",inputMessage.getChatId());
+    public SendMessage handle(Message message) {
+        return sendMessageService.create("Регистрация", message.getChatId());
     }
 
     @Override
     public String getName() {
-        return "Цены на прокат";
+        return "Регистрация";
     }
 }

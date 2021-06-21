@@ -16,7 +16,7 @@ public class Start implements HandlerInterface {
 
     private final SendMessageService sendMessageService;
     private final KeyboardService keyboardService;
-    private final String nextState = "/Menu";
+    private final String nextState = "Menu";
 
     @Autowired
     public Start(SendMessageService messageService, StartKeyboardService keyboardService){
@@ -38,6 +38,6 @@ public class Start implements HandlerInterface {
 
     @Override
     public String getName() {
-        return this.getClass().getSimpleName();
+        return "/start";
     }
 }

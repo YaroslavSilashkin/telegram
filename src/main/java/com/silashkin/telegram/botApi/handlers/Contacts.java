@@ -27,6 +27,6 @@ public class Contacts implements HandlerInterface {
 
     @Override
     public String getName() {
-        return this.getClass().getSimpleName();
+        return "Контакты";
     }
 }
