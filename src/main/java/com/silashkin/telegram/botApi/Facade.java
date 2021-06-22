@@ -33,9 +33,8 @@ public class Facade {
         HandlerInterface handler;
         final String inputMessageText = inputMessage.getText();
         final long chat = inputMessage.getChatId();
-        //refactor this
         HandlerInterface fromContextHandler = botStateContext.getByName(inputMessageText);
-        HandlerInterface fromCacheHandler = userCache.getCacheHandler((int) chat);
+        HandlerInterface fromCacheHandler = userCache.getCacheHandler(chat);
         handler = fromCacheHandler;
 
         if (fromContextHandler != null) {
@@ -46,7 +45,7 @@ public class Facade {
         }
 
         replyMessage = handler.handle(inputMessage);
-        userCache.setCacheHandler((int) chat, botStateContext.getByName(handler.getNextHandlerName()));
+        userCache.setCacheHandler(chat, botStateContext.getByName(handler.getNextHandlerName()));
         return replyMessage.setChatId(chat);
     }
 }

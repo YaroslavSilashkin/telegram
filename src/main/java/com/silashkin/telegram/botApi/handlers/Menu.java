@@ -15,8 +15,8 @@ public class Menu implements HandlerInterface {
     private final SendMessageService sendMessageService;
     private final KeyboardService keyboardService;
 
-@Autowired
-public Menu(SendMessageService messageService, MenuKeyboardService keyboardService){
+    @Autowired
+    public Menu(SendMessageService messageService, MenuKeyboardService keyboardService){
     this.sendMessageService = messageService;
     this.keyboardService = keyboardService;
 }

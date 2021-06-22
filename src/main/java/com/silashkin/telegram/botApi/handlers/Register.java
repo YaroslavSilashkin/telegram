@@ -16,6 +16,7 @@ public class Register implements HandlerInterface {
     public Register(SendMessageService sendMessageService){
         this.sendMessageService=sendMessageService;
     }
+
     @Override
     public String getNextHandlerName() {
         return "Регистрация";

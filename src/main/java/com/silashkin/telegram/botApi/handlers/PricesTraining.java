@@ -15,6 +15,7 @@ public class PricesTraining implements HandlerInterface {
     public PricesTraining(SendMessageService sendMessageService){
         this.sendMessageService=sendMessageService;
     }
+
     @Override
     public String getNextHandlerName() {
         return "Цены на обучение";

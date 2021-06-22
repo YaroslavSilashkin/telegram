@@ -18,7 +18,6 @@ public class BotContext {
     }
 
     public HandlerInterface getByName(String handlerName) {
-        HandlerInterface handler = handlers.get(handlerName);
         return handlers.get(handlerName);
     }
 }

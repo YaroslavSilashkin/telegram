@@ -1,21 +1,20 @@
 package com.silashkin.telegram.repository.entity;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import javax.persistence.*;
+
+import lombok.*;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Table(name = "users")
 public class User{
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private long chat;
-    String handlerName;
+    private String handlerName;
+    private int ski;
 }
