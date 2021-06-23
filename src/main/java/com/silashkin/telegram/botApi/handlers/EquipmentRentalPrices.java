@@ -11,6 +11,7 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 public class EquipmentRentalPrices implements HandlerInterface {
 
     private final SendMessageService sendMessageService;
+    String price = "Цены на прокат: \n 2 часа\t          1050 руб\n 2 часа\t              1350 руб\n 3 часа\t            1600 руб\n 5 часов\t          1800 руб";
 
     @Autowired
     public EquipmentRentalPrices (SendMessageService messageService){
@@ -18,14 +19,9 @@ public class EquipmentRentalPrices implements HandlerInterface {
     }
 
     @Override
-    public String getNextHandlerName() {
-        return "/EquipmentRentalPrices";
-    }
-
-    @Override
     public SendMessage handle(Message inputMessage) {
 
-        return sendMessageService.create("Цены на прокат",inputMessage.getChatId());
+        return sendMessageService.create(price,inputMessage.getChatId());
     }
 
     @Override

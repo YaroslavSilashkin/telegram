@@ -18,11 +18,6 @@ public class Register implements HandlerInterface {
     }
 
     @Override
-    public String getNextHandlerName() {
-        return "Регистрация";
-    }
-
-    @Override
     public SendMessage handle(Message message) {
         return sendMessageService.create("Регистрация", message.getChatId());
     }

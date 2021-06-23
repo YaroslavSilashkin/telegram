@@ -7,22 +7,21 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 
 @Component
-public class Contacts implements HandlerInterface {
+public class Prices implements HandlerInterface {
 
     private final SendMessageService sendMessageService;
-    private String contacts = "Тел. +55555555555";
 
-    public Contacts(SendMessageService sendMessageService) {
+    public Prices(SendMessageService sendMessageService) {
         this.sendMessageService = sendMessageService;
     }
 
     @Override
     public SendMessage handle(Message inputMessage) {
-        return sendMessageService.create(contacts, inputMessage.getChatId());
+        return sendMessageService.create("", inputMessage.getChatId());
     }
 
     @Override
     public String getName() {
-        return "Контакты";
+        return "Цены";
     }
 }

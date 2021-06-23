@@ -2,20 +2,17 @@ package com.silashkin.telegram.botApi;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
-import com.silashkin.telegram.cache.UserCache;
+import org.telegram.telegrambots.meta.api.objects.Update;
 
 @Component
 public class Facade {
 
-    private UserCache userCache;
-    private BotContext botStateContext;
+    private final BotContext botStateContext;
 
     @Autowired
-    public Facade(UserCache userCache, BotContext botStateContext) {
-        this.userCache = userCache;
+    public Facade(BotContext botStateContext) {
         this.botStateContext = botStateContext;
     }
 
@@ -33,19 +30,13 @@ public class Facade {
         HandlerInterface handler;
         final String inputMessageText = inputMessage.getText();
         final long chat = inputMessage.getChatId();
-        HandlerInterface fromContextHandler = botStateContext.getByName(inputMessageText);
-        HandlerInterface fromCacheHandler = userCache.getCacheHandler(chat);
-        handler = fromCacheHandler;
 
-        if (fromContextHandler != null) {
-            handler = fromContextHandler;
-        }
+        HandlerInterface fromContextHandler = botStateContext.getByName(inputMessageText);
+        handler = fromContextHandler;
         if (handler == null) {
             return null;
         }
-
         replyMessage = handler.handle(inputMessage);
-        userCache.setCacheHandler(chat, botStateContext.getByName(handler.getNextHandlerName()));
         return replyMessage.setChatId(chat);
     }
 }

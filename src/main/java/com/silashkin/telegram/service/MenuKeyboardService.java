@@ -27,17 +27,17 @@ public class MenuKeyboardService implements KeyboardService{
         KeyboardRow row4 = new KeyboardRow();
         KeyboardRow row5 = new KeyboardRow();
 
-        KeyboardButton risePrices = new KeyboardButton("Цены на skipass");
-        KeyboardButton equipmentRentalPrices = new KeyboardButton("Цены на прокат");
+        KeyboardButton prices = new KeyboardButton("Цены");
         KeyboardButton contacts = new KeyboardButton("Контакты");
-        KeyboardButton register = new KeyboardButton("Регистрация");
         KeyboardButton scheme = new KeyboardButton("Схема");
+        KeyboardButton register = new KeyboardButton("Регистрация");
+        KeyboardButton cam= new KeyboardButton("Камеры");
 
-        row1.add(scheme);
-        row2.add(risePrices);
-        row3.add(equipmentRentalPrices);
-        row4.add(contacts);
-        row5.add(register);
+        row1.add(prices);
+        row2.add(contacts);
+        row3.add(scheme);
+        row4.add(register);
+        row5.add(cam);
 
         keyboard.add(row1);
         keyboard.add(row2);

@@ -17,11 +17,6 @@ public class Scheme implements HandlerInterface {
     }
 
     @Override
-    public String getNextHandlerName() {
-        return "Scheme";
-    }
-
-    @Override
     public SendMessage handle(Message inputMessage) {
         return sendMessageService.create("Схема курорта", inputMessage.getChatId());
     }

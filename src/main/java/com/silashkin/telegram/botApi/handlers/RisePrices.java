@@ -1,24 +1,17 @@
 package com.silashkin.telegram.botApi.handlers;
 
 import com.silashkin.telegram.botApi.HandlerInterface;
-import java.util.ArrayList;
-import java.util.List;
-
-import com.silashkin.telegram.service.KeyboardService;
 import com.silashkin.telegram.service.SendMessageService;
-import com.silashkin.telegram.service.StartKeyboardService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
+
 @Component
 public class RisePrices implements HandlerInterface {
 
     private final SendMessageService sendMessageService;
+    String price = "Цены на skipass: \n 1 подъём\t          80 руб \n 2 часа\t              800 руб \n 3 часа\t            1000 руб\n 5 часов\t          1200 руб";
 
     @Autowired
     public RisePrices (SendMessageService messageService){
@@ -26,14 +19,8 @@ public class RisePrices implements HandlerInterface {
     }
 
     @Override
-    public String getNextHandlerName() {
-        return "/Price";
-    }
-
-    @Override
     public SendMessage handle(Message inputMessage) {
-
-        return sendMessageService.create("Цены на скипас",inputMessage.getChatId());
+        return sendMessageService.create(price, inputMessage.getChatId());
     }
 
     @Override

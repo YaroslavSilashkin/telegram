@@ -22,11 +22,6 @@ public class Menu implements HandlerInterface {
 }
 
     @Override
-    public String getNextHandlerName() {
-        return "/Menu";
-    }
-
-    @Override
     public SendMessage handle(Message inputMessage) {
 
         return keyboardService.create(sendMessageService.create("Основное меню", inputMessage.getChatId()));
@@ -34,6 +29,6 @@ public class Menu implements HandlerInterface {
 
     @Override
     public String getName() {
-        return this.getClass().getSimpleName();
+        return "Меню";
     }
 }

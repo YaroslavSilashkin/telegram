@@ -21,7 +21,7 @@ public class StartKeyboardService implements KeyboardService {
         replyKeyboardMarkup.setOneTimeKeyboard(false);
         List<KeyboardRow> keyboard = new ArrayList<>();
         KeyboardRow row1 = new KeyboardRow();
-        row1.add(new KeyboardButton("Начать"));
+        row1.add(new KeyboardButton("Меню"));
         keyboard.add(row1);
         replyKeyboardMarkup.setKeyboard(keyboard);
         message.enableMarkdown(true);
