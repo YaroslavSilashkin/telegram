@@ -25,6 +25,6 @@ public class RisePrices implements HandlerInterface {
 
     @Override
     public String getName() {
-        return "Цены на skipass";
+        return "RisePrices";
     }
 }
