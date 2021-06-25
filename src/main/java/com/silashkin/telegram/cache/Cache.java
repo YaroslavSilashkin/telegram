@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public interface Cache {
 
-    HandlerInterface getCacheHandler(long i);
+    HandlerInterface getCacheHandler(long chat);
 
-    void setCacheHandler(long i, HandlerInterface handler);
+    void setCacheHandler(long chat, HandlerInterface handler);
 }

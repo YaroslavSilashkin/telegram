@@ -20,4 +20,8 @@ public class BotContext {
     public HandlerInterface getByName(String handlerName) {
         return handlers.get(handlerName);
     }
+
+    public boolean contains(String key){
+        return handlers.containsKey(key);
+    }
 }

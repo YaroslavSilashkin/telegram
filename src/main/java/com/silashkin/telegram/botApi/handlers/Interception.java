@@ -8,23 +8,22 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 
 @Component
-public class PricesTraining implements HandlerInterface {
+public class Interception implements HandlerInterface {
 
     private final SendMessageService sendMessageService;
-    private final String price = "Цены на обучение с инструктором: \n 1 час\t          1500 руб";
 
     @Autowired
-    public PricesTraining(SendMessageService sendMessageService){
-        this.sendMessageService=sendMessageService;
+    public Interception(SendMessageService sendMessageService) {
+        this.sendMessageService = sendMessageService;
     }
 
     @Override
-    public SendMessage handle(Message message) {
-        return sendMessageService.create(price,message.getChatId());
+    public SendMessage handle(Message inputMessage) {
+        return sendMessageService.create("Функционал только тестируется", inputMessage.getChatId());
     }
 
     @Override
     public String getName() {
-        return "Цены на обучение";
+        return "Interseption";
     }
 }
