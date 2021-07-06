@@ -24,6 +24,6 @@ public class Interception implements HandlerInterface {
 
     @Override
     public String getName() {
-        return "Interseption";
+        return "Interception";
     }
 }
