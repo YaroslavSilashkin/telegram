@@ -10,7 +10,7 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 public class Contacts implements HandlerInterface {
 
     private final SendMessageService sendMessageService;
-    private String contacts = "Тел. +55555555555";
+    private String contacts = "Тел. +5555555555";
 
     public Contacts(SendMessageService sendMessageService) {
         this.sendMessageService = sendMessageService;
