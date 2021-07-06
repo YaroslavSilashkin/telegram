@@ -21,7 +21,7 @@ public class Start implements HandlerInterface {
 
     @Override
     public SendMessage handle(Message inputMessage) {
-        final String textMessage = "Привет, " + inputMessage.getChat().getFirstName() + "!" + " Это бот горнолыжного курорта";
+        final String textMessage = "Привет, " + inputMessage.getChat().getFirstName() + "! Это бот горнолыжного курорта";
         return keyboardService.create(sendMessageService.create(textMessage, inputMessage.getChatId()));
     }
 
