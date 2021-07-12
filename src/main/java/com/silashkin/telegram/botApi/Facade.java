@@ -6,8 +6,6 @@ import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
-import java.util.Optional;
-
 @Component
 public class Facade {
 
@@ -20,10 +18,13 @@ public class Facade {
 
     public BotApiMethod<?> handlerUpdate(Update update) {
         BotApiMethod<?> replyMessage = null;
-        Message message = update.getMessage();
+
         if (update.hasCallbackQuery()) {
             return handleCallbackQuery(update);
         }
+
+        Message message = update.getMessage();
+
         if (message != null && message.hasText()) {
             replyMessage = handleInputMessage(message);
         }
@@ -31,10 +32,8 @@ public class Facade {
     }
 
     private BotApiMethod<?> handleInputMessage(Message inputMessage) {
-        final Optional<String> inputMessageText = Optional.ofNullable(inputMessage.getText());
-        HandlerInterface fromContextHandler = botStateContext.getByName(inputMessageText.orElse("Interception"));
-        BotApiMethod<?> botApiMethod = fromContextHandler.handle(inputMessage);
-        return botApiMethod;
+        HandlerInterface fromContextHandler = botStateContext.getByName(inputMessage.getText());
+        return fromContextHandler.handle(inputMessage);
     }
 
     private BotApiMethod<?> handleCallbackQuery(Update update) {

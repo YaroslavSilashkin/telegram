@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -18,10 +19,6 @@ public class BotContext {
     }
 
     public HandlerInterface getByName(String handlerName) {
-        return handlers.get(handlerName);
-    }
-
-    public boolean contains(String key){
-        return handlers.containsKey(key);
+        return Optional.ofNullable(handlers.get(handlerName)).orElse(handlers.get("Interception"));
     }
 }

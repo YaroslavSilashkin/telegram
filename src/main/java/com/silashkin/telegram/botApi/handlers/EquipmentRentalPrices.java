@@ -26,6 +26,6 @@ public class EquipmentRentalPrices implements HandlerInterface {
 
     @Override
     public String getName() {
-        return "Цены на прокат";
+        return "EquipmentRentalPrices";
     }
 }

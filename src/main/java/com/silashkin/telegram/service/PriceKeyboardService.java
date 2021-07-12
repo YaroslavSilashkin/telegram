@@ -15,7 +15,9 @@ public class PriceKeyboardService implements KeyboardService{
         InlineKeyboardButton risePrices = new InlineKeyboardButton().setText("Цены на skipass").setCallbackData("RisePrices");
         InlineKeyboardButton equipmentRentalPrices = new InlineKeyboardButton().setText("Цены на снаряжение").setCallbackData("EquipmentRentalPrices");
         InlineKeyboardButton pricesTraining = new InlineKeyboardButton().setText("Цены на обучение").setCallbackData("PricesTraining");
+
         List<List<InlineKeyboardButton>> rows = List.of(List.of(risePrices), List.of(equipmentRentalPrices), List.of(pricesTraining));
+
         sendMessage.enableMarkdown(true);
         sendMessage.setReplyMarkup(new InlineKeyboardMarkup().setKeyboard(rows));
         return sendMessage;

@@ -11,6 +11,7 @@ import java.util.List;
 
 @Service
 public class MenuKeyboardService implements KeyboardService{
+
     @Override
     public SendMessage create(SendMessage message) {
 
@@ -24,8 +25,6 @@ public class MenuKeyboardService implements KeyboardService{
         KeyboardRow row1 = new KeyboardRow();
         KeyboardRow row2 = new KeyboardRow();
         KeyboardRow row3 = new KeyboardRow();
-        KeyboardRow row4 = new KeyboardRow();
-        KeyboardRow row5 = new KeyboardRow();
 
         KeyboardButton prices = new KeyboardButton("Цены");
         KeyboardButton contacts = new KeyboardButton("Контакты");
@@ -33,17 +32,15 @@ public class MenuKeyboardService implements KeyboardService{
         KeyboardButton register = new KeyboardButton("Регистрация");
         KeyboardButton cam= new KeyboardButton("Камеры");
 
-        row1.add(prices);
+        row1.add(scheme);
+        row1.add(register);
+        row2.add(prices);
         row2.add(contacts);
-        row3.add(scheme);
-        row4.add(register);
-        row5.add(cam);
+        row3.add(cam);
 
         keyboard.add(row1);
         keyboard.add(row2);
         keyboard.add(row3);
-        keyboard.add(row4);
-        keyboard.add(row5);
 
         replyKeyboardMarkup.setKeyboard(keyboard);
 

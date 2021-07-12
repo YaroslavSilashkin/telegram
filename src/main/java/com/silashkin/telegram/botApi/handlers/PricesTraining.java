@@ -25,6 +25,6 @@ public class PricesTraining implements HandlerInterface {
 
     @Override
     public String getName() {
-        return "Цены на обучение";
+        return "PricesTraining";
     }
 }
