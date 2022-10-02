@@ -37,6 +37,6 @@ public class Facade {
     }
 
     private BotApiMethod<?> handleCallbackQuery(Update update) {
-       return botStateContext.getByName(update.getCallbackQuery().getData()).handle(update.getCallbackQuery().getMessage());
+        return botStateContext.getByName(update.getCallbackQuery().getData()).handle(update.getCallbackQuery().getMessage());
     }
 }
