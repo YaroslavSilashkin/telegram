@@ -1,25 +1,26 @@
 package com.silashkin.telegram.repository.entity;
 
-import lombok.AllArgsConstructor;
+import com.silashkin.telegram.Type;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.UUID;
 
-@Entity
 @Data
+@Entity
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
-
 @Table(name = "users")
-public class User{
+public class User {
 
     @Id
+    @GeneratedValue
+    private UUID id;
     private Integer phone;
-    private String skiOrSnow;
+    private Type type;
     private String name;
 }
+

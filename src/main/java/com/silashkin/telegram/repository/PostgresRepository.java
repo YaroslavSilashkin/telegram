@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PostgresRepository extends JpaRepository<User, Integer> {
-   User getOne (Integer phone);
+
+    User getOneByPhone(Integer phone);
 }

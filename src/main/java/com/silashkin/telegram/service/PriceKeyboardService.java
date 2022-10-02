@@ -8,15 +8,15 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKe
 import java.util.List;
 
 @Component
-public class PriceKeyboardService implements KeyboardService{
+public class PriceKeyboardService implements KeyboardService {
 
     @Override
     public SendMessage create(SendMessage sendMessage) {
-        InlineKeyboardButton risePrices = new InlineKeyboardButton().setText("Цены на skipass").setCallbackData("RisePrices");
-        InlineKeyboardButton equipmentRentalPrices = new InlineKeyboardButton().setText("Цены на снаряжение").setCallbackData("EquipmentRentalPrices");
-        InlineKeyboardButton pricesTraining = new InlineKeyboardButton().setText("Цены на обучение").setCallbackData("PricesTraining");
+        var risePricesButton = new InlineKeyboardButton().setText("Цены на skipass").setCallbackData("SkipassPrices");
+        var equipmentRentalPricesButton = new InlineKeyboardButton().setText("Цены на снаряжение").setCallbackData("EquipmentRentalPrices");
+        var pricesTrainingButton = new InlineKeyboardButton().setText("Цены на обучение").setCallbackData("PricesTraining");
 
-        List<List<InlineKeyboardButton>> rows = List.of(List.of(risePrices), List.of(equipmentRentalPrices), List.of(pricesTraining));
+        List<List<InlineKeyboardButton>> rows = List.of(List.of(risePricesButton), List.of(equipmentRentalPricesButton), List.of(pricesTrainingButton));
 
         sendMessage.enableMarkdown(true);
         sendMessage.setReplyMarkup(new InlineKeyboardMarkup().setKeyboard(rows));

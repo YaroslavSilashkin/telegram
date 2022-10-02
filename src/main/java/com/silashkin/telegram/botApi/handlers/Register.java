@@ -2,24 +2,22 @@ package com.silashkin.telegram.botApi.handlers;
 
 import com.silashkin.telegram.botApi.Handler;
 import com.silashkin.telegram.service.SendMessageService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 
 @Component
+@RequiredArgsConstructor
 public class Register implements Handler {
 
-    SendMessageService sendMessageService;
+    private final SendMessageService sendMessageService;
 
-    @Autowired
-    public Register(SendMessageService sendMessageService){
-        this.sendMessageService=sendMessageService;
-    }
+    public static final String REGISTER = "Регистрация";
 
     @Override
     public SendMessage handle(Message message) {
-        return sendMessageService.create("Регистрация", message.getChatId());
+        return sendMessageService.create(REGISTER, message.getChatId());
     }
 
     @Override

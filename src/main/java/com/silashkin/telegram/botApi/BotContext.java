@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 @Component
 public class BotContext {
 
-    private HashMap<String, Handler> handlers;
+    private final HashMap<String, Handler> handlers;
 
     @Autowired
     public BotContext(List<Handler> handlers) {

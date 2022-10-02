@@ -3,26 +3,23 @@ package com.silashkin.telegram.botApi.handlers;
 import com.silashkin.telegram.botApi.Handler;
 import com.silashkin.telegram.service.KeyboardService;
 import com.silashkin.telegram.service.SendMessageService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 
 @Component
+@RequiredArgsConstructor
 public class Prices implements Handler {
 
     private final SendMessageService sendMessageService;
     private final KeyboardService priceKeyboardService;
 
-    @Autowired
-    public Prices(SendMessageService sendMessageService, KeyboardService priceKeyboardService) {
-        this.sendMessageService = sendMessageService;
-        this.priceKeyboardService = priceKeyboardService;
-    }
+    public static final String PRICES = "Цены";
 
     @Override
     public SendMessage handle(Message inputMessage) {
-        return priceKeyboardService.create(sendMessageService.create("Цены", inputMessage.getChatId()));
+        return priceKeyboardService.create(sendMessageService.create(PRICES, inputMessage.getChatId()));
     }
 
     @Override
