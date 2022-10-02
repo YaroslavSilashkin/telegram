@@ -32,7 +32,7 @@ public class Facade {
     }
 
     private BotApiMethod<?> handleInputMessage(Message inputMessage) {
-        HandlerInterface fromContextHandler = botStateContext.getByName(inputMessage.getText());
+        Handler fromContextHandler = botStateContext.getByName(inputMessage.getText());
         return fromContextHandler.handle(inputMessage);
     }
 

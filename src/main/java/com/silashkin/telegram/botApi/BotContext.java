@@ -11,14 +11,14 @@ import java.util.stream.Collectors;
 @Component
 public class BotContext {
 
-    private HashMap<String, HandlerInterface> handlers;
+    private HashMap<String, Handler> handlers;
 
     @Autowired
-    public BotContext(List<HandlerInterface> handlers) {
-        this.handlers = (HashMap<String, HandlerInterface>) handlers.stream().collect(Collectors.toMap(HandlerInterface::getName, t -> t));
+    public BotContext(List<Handler> handlers) {
+        this.handlers = (HashMap<String, Handler>) handlers.stream().collect(Collectors.toMap(Handler::getName, t -> t));
     }
 
-    public HandlerInterface getByName(String handlerName) {
+    public Handler getByName(String handlerName) {
         return Optional.ofNullable(handlers.get(handlerName)).orElse(handlers.get("Interception"));
     }
 }

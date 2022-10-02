@@ -1,6 +1,6 @@
 package com.silashkin.telegram.botApi.handlers;
 
-import com.silashkin.telegram.botApi.HandlerInterface;
+import com.silashkin.telegram.botApi.Handler;
 import com.silashkin.telegram.service.KeyboardService;
 import com.silashkin.telegram.service.MenuKeyboardService;
 import com.silashkin.telegram.service.SendMessageService;
@@ -10,7 +10,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 
 @Component
-public class Menu implements HandlerInterface {
+public class Menu implements Handler {
 
     private final SendMessageService sendMessageService;
     private final KeyboardService keyboardService;
